@@ -41,15 +41,23 @@ export default class AddTodo extends Component {
 const styles = StyleSheet.create({
     container: {
       padding:15,
-      backgroundColor:'grey',
+      backgroundColor:'lightgrey',
       flexDirection:'row',
       width:'100%',
     },
     input:{
-        flex:1
+        flex:1,
+        padding:5,
+        backgroundColor:'white',
+        borderRadius:5,
+        marginRight:10
+
     },
     button:{
         flexShrink:0,
+      backgroundColor:'lightgrey',
+        margin:10,
+
     }
   });
   
