@@ -1,39 +1,62 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import AddTodo from './components/addTodo'
+import TodoList from './components/list'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+class Hello extends Component {
+  constructor() {
+    super();
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Text
+        style={styles.welcome}>
+        Welcome, {this.props.name}
+      </Text>
+    )
+  }
+}
+
+export default class App extends Component{
+  constructor() {
+    super();
+    const todo1 = {
+      text: "fazer o ap bonitão",
+    }
+    const todo2 = {
+      text: "fazer o app mais bonitão",
+    }
+    const todo3 = {
+      text: "lanchar",
+    }
+    this.state = {
+      todos: [todo1,todo2,todo3],
+    }
+  }
+  add(text){
+      this.setState({
+      // todos:{...this.state.todos,text}
+      todos:this.state.todos.concat([{text}])
+    })
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <View style={styles.container}>
+        <AddTodo  add={ text => this.add(text)} /> 
+        <TodoList todoList={this.state.todos} />
+        </View>
+      </React.Fragment>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent:'flex-start',
+    alignItems:'flex-start',
     backgroundColor: '#F5FCFF',
   },
   welcome: {
@@ -46,4 +69,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  header:{
+    flex: 5,
+    backgroundColor: '#841584',
+  }
 });
