@@ -6,13 +6,13 @@ class Todo extends Component {
         return(
             <TouchableNativeFeedback
                 onPress={()=>{
-                    this.props.navigation.navigate('Details',{text:this.props.text})
+                    this.props.navigation.navigate('Details',{todo: this.props.todo})
                     }
                 }>
                 <View>
          
                 <Text style={styles.todo}>
-                    {this.props.text}
+                    {this.props.todo.text}
                     
                 </Text>
                 </View>

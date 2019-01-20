@@ -11,9 +11,10 @@ class TodoList extends Component {
                 {this.props.todoList.map( (todo) => (
                     <Todo 
                     navigation = {this.props.navigation}
-                    style={styles.todolist}text = {todo.text} />
+                    style={styles.todolist}
+                    todo = {todo} />
                    ))
-                }
+                }   
             </View>
         )
     }
